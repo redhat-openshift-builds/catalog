@@ -1,7 +1,23 @@
 ---
-defaultChannel: latest
+defaultChannel: stable-v1
 name: openshift-builds-operator
 schema: olm.package
+---
+entries:
+- name: openshift-builds-operator.v1.0.0
+- name: openshift-builds-operator.v1.0.1
+- name: openshift-builds-operator.v1.0.2
+  skips:
+  - openshift-builds-operator.v1.0.0
+  - openshift-builds-operator.v1.0.1
+- name: openshift-builds-operator.v1.1.0
+  replaces: openshift-builds-operator.v1.0.2
+  skips:
+  - openshift-builds-operator.v1.0.0
+  - openshift-builds-operator.v1.0.1
+name: stable-v1
+package: openshift-builds-operator
+schema: olm.channel
 ---
 entries:
 - name: openshift-builds-operator.v1.0.0
