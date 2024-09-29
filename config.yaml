@@ -13,6 +13,7 @@ ocp:
   - v4.15
   - v4.16
   - v4.17
+  - v4.18
 replacements:
   - from: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
     to: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
