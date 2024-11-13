@@ -7,12 +7,12 @@ konflux:
 upgrade:
   between_major: skipRange
 ocp:
-  - v4.12
-  - v4.13
-  - v4.14
-  - v4.15
-  - v4.16
-  - v4.17
+  - 4.12
+  - 4.13
+  - 4.14
+  - 4.15
+  - 4.16
+  - 4.17
 replacements:
   - from: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
     to: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
