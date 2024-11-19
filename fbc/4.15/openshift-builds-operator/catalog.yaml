@@ -71,27 +71,27 @@ entries:
       schema: olm.bundle
       name: openshift-builds-operator.v1.0.0
     message: |
-      openshift-builds-operator.v1.0.0 is deprecated. Uninstall and install openshift-builds-operator.v1.1.0 or later.
+      openshift-builds-operator.v1.0.0 has reached the end of maintenance support. Please upgrade to openshift-builds-operator.v1.1.0 or later.
   - reference:
       schema: olm.bundle
       name: openshift-builds-operator.v1.0.1
     message: |
-      openshift-builds-operator.v1.0.1 is deprecated. Uninstall and install openshift-builds-operator.v1.1.0 or later.
+      openshift-builds-operator.v1.0.1 has reached the end of maintenance support. Please upgrade to openshift-builds-operator.v1.1.0 or later.
   - reference:
       schema: olm.bundle
       name: openshift-builds-operator.v1.0.2
     message: |
-      openshift-builds-operator.v1.0.2 is deprecated. Uninstall and install openshift-builds-operator.v1.1.0 or later.
+      openshift-builds-operator.v1.0.2 is deprecated and will reach end of maintenance support soon. Please upgrade to openshift-builds-operator.v1.1.0 or later.
   - reference:
       schema: olm.channel
       name: stable-v1
     message: |
-      channel 'stable-v1' is deprecated. Please switch to channel 'latest', 'builds-1.1' or later.
+      channel 'stable-v1' is deprecated and will reach end of maintenance support soon. Please switch to channel 'latest', 'builds-1.1' or later.
   - reference:
       schema: olm.channel
       name: openshift-builds-1.0
     message: |
-      channel 'openshift-builds-1.0' is deprecated. Please switch to channel 'latest', 'builds-1.1' or later.
+      channel 'openshift-builds-1.0' is deprecated and will reach end of maintenance support soon. Please switch to channel 'latest', 'builds-1.1' or later.
 ---
 image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:7396a2b15e1674cdf447889a336cadc2b9a3d292a201c04f310bd10b9d4088b6
 name: openshift-builds-operator.v1.0.0
