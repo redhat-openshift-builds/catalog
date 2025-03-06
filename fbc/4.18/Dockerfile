@@ -3,7 +3,7 @@
 # Using brew.registry.redhat.io instead of registry.redhat.io since 4.18 is not release yet.
 # brew.registry.redhat.io/rh-osbs/openshift-ose-operator-registry-rhel9:v4.18
 # registry.redhat.io/openshift4/ose-operator-registry-rhel9:v4.18
-FROM brew.registry.redhat.io/rh-osbs/openshift-ose-operator-registry-rhel9:v4.18
+FROM registry.redhat.io/openshift4/ose-operator-registry-rhel9:v4.18
 
 # Configure the entrypoint and command
 ENTRYPOINT ["/bin/opm"]
