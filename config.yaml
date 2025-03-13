@@ -13,9 +13,13 @@ ocp:
   - 4.15
   - 4.16
   - 4.17
+  - 4.18
 replacements:
   - from: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
     to: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
+# Test Konflux
+#  - from: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-operator-bundle-1-3
+#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-operator-bundle-1-3
 # Enable when the images are not pushed to registry.redhat.io
 #  - from: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
 #    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-operator-bundle
@@ -46,3 +50,4 @@ bundles:
   - sha256:6c7a737b62c2e368732d80287c96f70442f3949d8b6a0e7d4b5f8afa596384ec
   - sha256:db0cb578c2bdd56bea08e7eaf9db555f78653519714bf077b2a7efa052ef792f
   - sha256:29177a9d6cab538e97d35a0aff6aed31cebd068a34b49884dbab7af9d158ea48
+  - sha256:3c5c18e88d2b8e1122280be2f5c909adf5c52171fdd18d50a7946240b6d8eb5e
