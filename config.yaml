@@ -7,41 +7,24 @@ konflux:
 upgrade:
   between_major: skipRange
 ocp:
-  - 4.12
-  - 4.13
-  - 4.14
+#  - 4.12
+#  - 4.13
+#  - 4.14
   - 4.15
   - 4.16
   - 4.17
   - 4.18
 replacements:
+# Test Konflux
+#  - from: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-operator-bundle-1-4
+#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-operator-bundle-1-4
+# Production bundles
   - from: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
     to: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
-# Test Konflux
-#  - from: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-operator-bundle-1-3
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-operator-bundle-1-3
-# Enable when the images are not pushed to registry.redhat.io
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-operator-bundle
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-rhel9-operator
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-operator
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-controller-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-controller
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-image-processing-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-image-processing
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-image-bundler-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-image-bundler
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-git-cloner-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-git-cloner
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-waiters-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-waiter
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-webhook-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-webhook
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-shared-resource
-#  - from: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-webhook-rhel9
-#    to: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds/openshift-builds-shared-resource-webhook
 bundles:
+# Test
+#  - sha256:29ff0cf583ffea8b9a2c8e77aee7928bbde57476be9bb3d092341e20da52b3e1
+# Prod
   - sha256:7396a2b15e1674cdf447889a336cadc2b9a3d292a201c04f310bd10b9d4088b6
   - sha256:56c474f8bc49060c3f1a6fc19d5984b2bbf81ac3ab76a80ce63faa9010d0759f
   - sha256:d098d7a51bf3bf5b4c4e27bb570069e4f3e9c897b731ccc8d3a04f5aba77e448
@@ -51,3 +34,6 @@ bundles:
   - sha256:db0cb578c2bdd56bea08e7eaf9db555f78653519714bf077b2a7efa052ef792f
   - sha256:29177a9d6cab538e97d35a0aff6aed31cebd068a34b49884dbab7af9d158ea48
   - sha256:3c5c18e88d2b8e1122280be2f5c909adf5c52171fdd18d50a7946240b6d8eb5e
+  - sha256:6a4e331fe99dc1349e4682f3ffbc2102f60613e81ffde70ec039ecc8d32bd05c
+
+
