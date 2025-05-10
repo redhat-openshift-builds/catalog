@@ -7,13 +7,9 @@ metadata:
     build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: |
-      event == "pull_request" &&
-      target_branch == "main" && 
-      (
-        files.all.exists(x, x.matches('fbc/4.12')) ||
-        files.all.exists(x, x.matches('.tekton/openshift-builds-fbc-4-12-pull-request.yaml'))
-      )
+    pipelinesascode.tekton.dev/on-cel-expression: "event == \"pull_request\" &&\ntarget_branch
+      == \"main\" && \n(\n  files.all.exists(x, x.matches('fbc/4.12')) ||\n  files.all.exists(x,
+      x.matches('.tekton/openshift-builds-fbc-4-12-pull-request.yaml'))\n)\n"
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: openshift-builds-fbc-4-12
@@ -23,34 +19,34 @@ metadata:
   namespace: rh-openshift-builds-tenant
 spec:
   params:
-    - name: git-url
-      value: '{{source_url}}'
-    - name: revision
-      value: '{{revision}}'
-    - name: output-image
-      value: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-fbc-4-12:on-pr-{{revision}}
-    - name: image-expires-after
-      value: 5d
-    - name: dockerfile
-      value: Dockerfile
-    - name: path-context
-      value: fbc/4.12
-    - name: build-platforms
-      value:
-        - linux/x86_64
+  - name: git-url
+    value: '{{source_url}}'
+  - name: revision
+    value: '{{revision}}'
+  - name: output-image
+    value: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-fbc-4-12:on-pr-{{revision}}
+  - name: image-expires-after
+    value: 5d
+  - name: dockerfile
+    value: Dockerfile
+  - name: path-context
+    value: fbc/4.12
+  - name: build-platforms
+    value:
+    - linux/x86_64
   pipelineRef:
-    resolver: git
     params:
-      - name: url
-        value: https://github.com/redhat-openshift-builds/release.git
-      - name: revision
-        value: main
-      - name: pathInRepo
-        value: /pipelines/konflux-build-fbc.yaml
-  taskRunTemplate: {}
+    - name: url
+      value: https://github.com/redhat-openshift-builds/release.git
+    - name: revision
+      value: main
+    - name: pathInRepo
+      value: /pipelines/konflux-build-fbc.yaml
+    resolver: git
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-openshift-builds-fbc-4-12
   workspaces:
-    - name: git-auth
-      secret:
-        secretName: '{{ git_auth_secret }}'
+  - name: git-auth
+    secret:
+      secretName: '{{ git_auth_secret }}'
 status: {}
-
