@@ -1,0 +1,202 @@
+---
+defaultChannel: latest
+description: Builds for OpenShift Catalog
+icon:
+  base64data: PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM4IDM4Ij48ZGVmcz48c3R5bGU+LmN7ZmlsbDojZTAwO30uZHtmaWxsOiNmZmY7fS5le2ZpbGw6I2UwZTBlMDt9PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImEiPjxnPjxyZWN0IGNsYXNzPSJkIiB4PSIxIiB5PSIxIiB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHJ4PSI5IiByeT0iOSIvPjxwYXRoIGNsYXNzPSJlIiBkPSJNMjgsMi4yNWM0LjI3LDAsNy43NSwzLjQ4LDcuNzUsNy43NVYyOGMwLDQuMjctMy40OCw3Ljc1LTcuNzUsNy43NUgxMGMtNC4yNywwLTcuNzUtMy40OC03Ljc1LTcuNzVWMTBjMC00LjI3LDMuNDgtNy43NSw3Ljc1LTcuNzVIMjhtMC0xLjI1SDEwQzUuMDMsMSwxLDUuMDMsMSwxMFYyOGMwLDQuOTcsNC4wMyw5LDksOUgyOGM0Ljk3LDAsOS00LjAzLDktOVYxMGMwLTQuOTctNC4wMy05LTktOWgwWiIvPjwvZz48L2c+PGcgaWQ9ImIiPjxnPjxjaXJjbGUgY2xhc3M9ImQiIGN4PSIxOSIgY3k9IjE5IiByPSI3LjM4Ii8+PHBhdGggY2xhc3M9ImMiIGQ9Ik0xOSwxMC4zOGMtNC43NiwwLTguNjIsMy44Ny04LjYyLDguNjJzMy44Nyw4LjYyLDguNjIsOC42Miw4LjYyLTMuODcsOC42Mi04LjYyLTMuODctOC42Mi04LjYyLTguNjJabTAsMTZjLTQuMDcsMC03LjM4LTMuMzEtNy4zOC03LjM4czMuMzEtNy4zOCw3LjM4LTcuMzgsNy4zOCwzLjMxLDcuMzgsNy4zOC0zLjMxLDcuMzgtNy4zOCw3LjM4WiIvPjwvZz48Zz48cGF0aCBjbGFzcz0iZCIgZD0iTTE1LjM4LDE2YzAtLjM1LC4yOC0uNjIsLjYyLS42Mmg1LjM4di00Ljc1SDEwLjYydjEwLjc1aDQuNzV2LTUuMzhaIi8+PHJlY3QgY2xhc3M9ImQiIHg9IjE2LjYyIiB5PSIxNi42MiIgd2lkdGg9IjEwLjc1IiBoZWlnaHQ9IjEwLjc1Ii8+PHBhdGggZD0iTTI4LDE1LjM4aC01LjM4di01LjM4YzAtLjM1LS4yOC0uNjItLjYyLS42MkgxMGMtLjM1LDAtLjYyLC4yOC0uNjIsLjYydjEyYzAsLjM1LC4yOCwuNjIsLjYyLC42Mmg1LjM4djUuMzhjMCwuMzUsLjI4LC42MiwuNjIsLjYyaDEyYy4zNCwwLC42Mi0uMjgsLjYyLS42MnYtMTJjMC0uMzUtLjI4LS42Mi0uNjItLjYyWm0tLjYyLDEyaC0xMC43NXYtMTAuNzVoMTAuNzV2MTAuNzVaTTEwLjYyLDEwLjYyaDEwLjc1djQuNzVoLTUuMzhjLS4zNSwwLS42MiwuMjgtLjYyLC42MnY1LjM4aC00Ljc1VjEwLjYyWiIvPjwvZz48Zz48cG9seWdvbiBjbGFzcz0iZCIgcG9pbnRzPSIxOS44OCAyMiAyMSAyMy4xMiAyMSAyMC44OCAxOS44OCAyMiIvPjxwYXRoIGNsYXNzPSJjIiBkPSJNMjEsMjAuODhsLjQ0LS40NGMuMjQtLjI0LC4yNC0uNjQsMC0uODgtLjI0LS4yNC0uNjQtLjI0LS44OCwwbC0yLDJjLS4yNCwuMjQtLjI0LC42NCwwLC44OGwyLDJjLjEyLC4xMiwuMjgsLjE4LC40NCwuMThzLjMyLS4wNiwuNDQtLjE4Yy4yNC0uMjQsLjI0LS42NCwwLS44OGwtLjQ0LS40NC0xLjEyLTEuMTIsMS4xMi0xLjEyWiIvPjxwb2x5Z29uIGNsYXNzPSJkIiBwb2ludHM9IjIzIDIwLjg4IDIzIDIzLjEyIDI0LjEyIDIyIDIzIDIwLjg4Ii8+PHBhdGggY2xhc3M9ImMiIGQ9Ik0yNS40NCwyMS41NmwtMi0yYy0uMjQtLjI0LS42NC0uMjQtLjg4LDAtLjI0LC4yNC0uMjQsLjY0LDAsLjg4bC40NCwuNDQsMS4xMiwxLjEyLTEuMTIsMS4xMi0uNDQsLjQ0Yy0uMjQsLjI0LS4yNCwuNjQsMCwuODgsLjEyLC4xMiwuMjgsLjE4LC40NCwuMThzLjMyLS4wNiwuNDQtLjE4bDItMmMuMjQtLjI0LC4yNC0uNjQsMC0uODhaIi8+PC9nPjwvZz48L3N2Zz4=
+  mediatype: image/svg+xml
+name: openshift-builds-operator
+schema: olm.package
+---
+entries:
+- name: openshift-builds-operator.v1.4.0
+name: builds-1.4
+package: openshift-builds-operator
+schema: olm.channel
+---
+entries:
+- name: openshift-builds-operator.v1.4.0
+name: latest
+package: openshift-builds-operator
+schema: olm.channel
+---
+image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:6a4e331fe99dc1349e4682f3ffbc2102f60613e81ffde70ec039ecc8d32bd05c
+name: openshift-builds-operator.v1.4.0
+package: openshift-builds-operator
+properties:
+- type: olm.gvk
+  value:
+    group: operator.openshift.io
+    kind: OpenShiftBuild
+    version: v1alpha1
+- type: olm.gvk
+  value:
+    group: operator.shipwright.io
+    kind: ShipwrightBuild
+    version: v1alpha1
+- type: olm.gvk.required
+  value:
+    group: operator.tekton.dev
+    kind: TektonConfig
+    version: v1alpha1
+- type: olm.package
+  value:
+    packageName: openshift-builds-operator
+    version: 1.4.0
+- type: olm.csv.metadata
+  value:
+    annotations:
+      alm-examples: |-
+        [
+          {
+            "apiVersion": "operator.openshift.io/v1alpha1",
+            "kind": "OpenShiftBuild",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "sharedResource": {
+                "state": "Enabled"
+              },
+              "shipwright": {
+                "build": {
+                  "state": "Enabled"
+                }
+              }
+            }
+          },
+          {
+            "apiVersion": "operator.shipwright.io/v1alpha1",
+            "kind": "ShipwrightBuild",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "targetNamespace": "openshift-builds"
+            }
+          }
+        ]
+      capabilities: Full Lifecycle
+      categories: Developer Tools, Integration & Delivery
+      certified: "true"
+      containerImage: registry.redhat.io/openshift-builds/openshift-builds-operator-rhel9
+      createdAt: "2024-11-15T22:28:01Z"
+      description: Builds for Red Hat OpenShift is a framework for building container
+        images on Kubernetes.
+      features.operators.openshift.io/cnf: "false"
+      features.operators.openshift.io/cni: "false"
+      features.operators.openshift.io/csi: "true"
+      features.operators.openshift.io/disconnected: "true"
+      features.operators.openshift.io/fips-compliant: "false"
+      features.operators.openshift.io/proxy-aware: "true"
+      features.operators.openshift.io/tls-profiles: "false"
+      features.operators.openshift.io/token-auth-aws: "false"
+      features.operators.openshift.io/token-auth-azure: "false"
+      features.operators.openshift.io/token-auth-gcp: "false"
+      operatorframework.io/cluster-monitoring: "true"
+      operatorframework.io/suggested-namespace: openshift-builds
+      operators.openshift.io/valid-subscription: '["OpenShift Container Platform",
+        "OpenShift Platform Plus"]'
+      operators.operatorframework.io/builder: operator-sdk-v1.35.0
+      operators.operatorframework.io/internal-objects: '["openshiftbuilds.operator.openshift.io","shipwrightbuilds.operator.shipwright.io"]'
+      operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
+      repository: https://github.com/shipwright-io/operator
+      support: Red Hat
+    apiServiceDefinitions: {}
+    crdDescriptions:
+      owned:
+      - description: OpenShiftBuild describes the desired state of Builds for OpenShift,
+          and the status of all deployed components.
+        displayName: Open Shift Build
+        kind: OpenShiftBuild
+        name: openshiftbuilds.operator.openshift.io
+        version: v1alpha1
+      - description: ShipwrightBuild represents the deployment of Shipwright's build
+          controller on a Kubernetes cluster.
+        displayName: Shipwright Build
+        kind: ShipwrightBuild
+        name: shipwrightbuilds.operator.shipwright.io
+        version: v1alpha1
+      required:
+      - kind: TektonConfig
+        name: tektonconfigs.operator.tekton.dev
+        version: v1alpha1
+    description: "Builds for Red Hat OpenShift is an extensible build framework based
+      on the Shipwright project, \nwhich you can use to build container images on
+      an OpenShift Container Platform cluster. \nYou can build container images from
+      source code and Dockerfile by using image build tools, \nsuch as Source-to-Image
+      (S2I) and Buildah. You can create and apply build resources, view logs of build
+      runs, \nand manage builds in your OpenShift Container Platform namespaces.\nRead
+      more: [https://shipwright.io](https://shipwright.io)\n\n## Features\n\n* Standard
+      Kubernetes-native API for building container images from source code and Dockerfile\n\n*
+      Support for Source-to-Image (S2I) and Buildah build strategies\n\n* Extensibility
+      with your own custom build strategies\n\n* Execution of builds from source code
+      in a local directory\n\n* Shipwright CLI for creating and viewing logs, and
+      managing builds on the cluster\n\n* Integrated user experience with the Developer
+      perspective of the OpenShift Container Platform web console\n"
+    displayName: Builds for Red Hat OpenShift Operator
+    installModes:
+    - supported: false
+      type: OwnNamespace
+    - supported: false
+      type: SingleNamespace
+    - supported: false
+      type: MultiNamespace
+    - supported: true
+      type: AllNamespaces
+    keywords:
+    - build
+    - shipwright
+    - tekton
+    - cicd
+    labels:
+      operatorframework.io/arch.amd64: supported
+      operatorframework.io/arch.arm64: supported
+      operatorframework.io/arch.ppc64le: supported
+      operatorframework.io/arch.s390x: supported
+    links:
+    - name: Documentation
+      url: https://docs.redhat.com/en/documentation/builds_for_red_hat_openshift/1.4
+    - name: Builds for Openshift
+      url: https://github.com/redhat-openshift-builds/operator
+    maintainers:
+    - email: openshift-builds@redhat.com
+      name: Red Hat OpenShift Builds Team
+    maturity: stable
+    minKubeVersion: 1.25.0
+    provider:
+      name: Red Hat
+      url: https://www.redhat.com
+relatedImages:
+- image: registry.redhat.io/openshift-builds/openshift-builds-controller-rhel9@sha256:538416bc1384eb987e8a7e80b57eda3feddaf4260b196709a6e9a9125e3af39e
+  name: OPENSHIFT_BUILDS_CONTROLLER
+- image: registry.redhat.io/openshift-builds/openshift-builds-git-cloner-rhel9@sha256:1a6ca51c2c68950af605ff367356ab6c0ef7d1b2fd6fb8f00aa665196ff7af84
+  name: OPENSHIFT_BUILDS_GIT_CLONER
+- image: registry.redhat.io/openshift-builds/openshift-builds-image-bundler-rhel9@sha256:c60ca44275297d2ee8c499d9d7fb4056d104f4bd5dec8a02e7388241ac466c44
+  name: OPENSHIFT_BUILDS_IMAGE_BUNDLER
+- image: registry.redhat.io/openshift-builds/openshift-builds-image-processing-rhel9@sha256:f87c2069105121927fb0c0a2e37f8f72bc6cb5e035fa8d22f7b41ce0e86c0631
+  name: OPENSHIFT_BUILDS_IMAGE_PROCESSING
+- image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:6a4e331fe99dc1349e4682f3ffbc2102f60613e81ffde70ec039ecc8d32bd05c
+  name: ""
+- image: registry.redhat.io/openshift-builds/openshift-builds-rhel9-operator@sha256:b35eac4eb61aa02259f83ffe609def21af29c52f15e8224c2a5b47d015916d06
+  name: OPENSHIFT_BUILDS_OPERATOR
+- image: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-rhel9@sha256:5fd253914db7137b5ab7f8ec9cf912e1f2d0899263d26effe55f24fa0ea18c51
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE
+- image: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-webhook-rhel9@sha256:cdd533ea5127d620d0961c59b06fd011f5dfda6e98a4562b85ab4bdda2cba349
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE_WEBHOOK
+- image: registry.redhat.io/openshift-builds/openshift-builds-waiters-rhel9@sha256:f4b935c16dcbbc0393733437747497c1d24f2cc782c40c49738e5f37c037b3e7
+  name: OPENSHIFT_BUILDS_WAITER
+- image: registry.redhat.io/openshift-builds/openshift-builds-webhook-rhel9@sha256:6251cb303774e29d137a37d6527875c371fe1d3f6a5fa0383e80f0e9ef5c02be
+  name: OPENSHIFT_BUILDS_WEBHOOK
+- image: registry.redhat.io/openshift4/ose-csi-node-driver-registrar-rhel9@sha256:5e87ba403f9e9fff3002a8275aba0d6c36aed54fb4754d90fa0516ad989f187a
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE_NODE_REGISTRAR
+- image: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9@sha256:1c7c24111f1709d7648156873ced09462638aa4b3cf7e7aee13297e51bcdfb3e
+  name: OPENSHIFT_BUILDS_KUBE_RBAC_PROXY
+- image: registry.redhat.io/source-to-image/source-to-image-rhel8@sha256:ed3fdd1e85f5c5434de6ec0feaec8c7fe4e680ca6c64258287f18ec2886bb71f
+  name: OPENSHIFT_BUILDS_SOURCE_TO_IMAGE
+- image: registry.redhat.io/ubi9/buildah@sha256:6886997da8c92214e99e3e8da47a0f08239172d2544b4edae058d5cb018effab
+  name: OPENSHIFT_BUILDS_BUILDAH
+schema: olm.bundle
+---
+entries: []
+package: openshift-builds-operator
+schema: olm.deprecations
