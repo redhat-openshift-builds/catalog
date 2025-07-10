@@ -37,7 +37,7 @@ generate_dockerfile() {
   fi
 
   # Generate Dockerfile
-  opm generate dockerfile -i "$image" "$path/$version/$package"
+  opm generate dockerfile -i "$image" -b "$image" "$path/$version/$package"
   mv "$path/$version"/*.Dockerfile "$path/$version"/Dockerfile
   success "Dockerfile"
 }
