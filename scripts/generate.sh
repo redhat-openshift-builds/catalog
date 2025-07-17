@@ -19,7 +19,7 @@ help() {
 # Generate Dockerfile
 generate_dockerfile() {
   local version=$1 config=$2 path=$3
-  local image package
+  local image package flags
 
   # Read configurations
   image=$(yq -e '.catalog.opmImage' "$config")
@@ -36,9 +36,17 @@ generate_dockerfile() {
     image="$image-rhel9:v$version"
   fi
 
+  # Set SED_INPLACE for cross-platform compatibility (Linux/macOS)
+  if [[ "$(uname)" == "Darwin" ]]; then
+    flags=(-i '')
+  else
+    flags=(-i)
+  fi
+
   # Generate Dockerfile
   opm generate dockerfile -i "$image" -b "$image" "$path/$version/$package"
   mv "$path/$version"/*.Dockerfile "$path/$version"/Dockerfile
+  sed "${flags[@]}" "/ADD $package/s/$/\/$package/" "$path/$version"/Dockerfile
   success "Dockerfile"
 }
 
