@@ -770,7 +770,7 @@ relatedImages:
   name: OPENSHIFT_BUILDS_BUILDAH
 schema: olm.bundle
 ---
-image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:f5ad5573f348d3a8f1749a3bcec27cbad50c85ddbfb7ad2b8ea51198795f6a11
+image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:4641018fce30f2f659dca7c920f73a5ef5706b087656b9bdaabe69fc7c09a6a5
 name: openshift-builds-operator.v1.6.0
 package: openshift-builds-operator
 properties:
@@ -919,9 +919,9 @@ relatedImages:
   name: OPENSHIFT_BUILDS_IMAGE_BUNDLER
 - image: registry.redhat.io/openshift-builds/openshift-builds-image-processing-rhel9@sha256:9f38cd42591b6a6b65e78a3cc5c165f8498ad3c79460a6c47acfb8744d2dd883
   name: OPENSHIFT_BUILDS_IMAGE_PROCESSING
-- image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:f5ad5573f348d3a8f1749a3bcec27cbad50c85ddbfb7ad2b8ea51198795f6a11
+- image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:4641018fce30f2f659dca7c920f73a5ef5706b087656b9bdaabe69fc7c09a6a5
   name: ""
-- image: registry.redhat.io/openshift-builds/openshift-builds-rhel9-operator@sha256:dd96e8c857bc52097d4d194db8fa2cb368bbdcbb6594722660d4e906d0bdc420
+- image: registry.redhat.io/openshift-builds/openshift-builds-rhel9-operator@sha256:1b4b8b72a377ae6cff48d41f86a135a31add673922e1a3b3dd9a2386f452419f  
   name: OPENSHIFT_BUILDS_OPERATOR
 - image: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-rhel9@sha256:1a61d4a8f69fa845ee678dd96f934685821828e7575852f97b6e7b1dd79a8297
   name: OPENSHIFT_BUILDS_SHARED_RESOURCE
