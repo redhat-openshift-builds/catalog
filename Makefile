@@ -13,13 +13,18 @@ OPM_VERSION 		?= "1.53.0"
 YQ_VERSION 			?= "4.44.3"
 
 # Default files and directories
-TMP		?= "temp" # Blank value will create temp directory using 'mktemp'.
-DIR		?= "" # Blank value will use 'catalog.directory' from config.
-OCP		?= "" # Blank value will generate catalog for all OCP version in config.
-CONFIG	?= "config.yaml" # Specifying Config file is mandatory.
-BIN		?= "bin" # Default path for installing binaries.
-BUNDLE	?= "" # Specify a single bundle. Overrides config file.
-REBUILD	?= "false" # Set true to build catalog from scratch.
+TMP     ?= temp
+DIR     ?=
+OCP     ?=
+CONFIG  ?= config.yaml
+BIN     ?= bin
+BUNDLE  ?=
+REBUILD ?= false
+
+# Image configuration
+REGISTRY   ?= localhost
+VERSION    ?=
+IMAGE_NAME  = $(REGISTRY)/openshift-builds-catalog:$(VERSION)-$(OCP)
 
 # Being binaries, they're OS and Arch specific
 OS 		?= $(shell uname -s | tr '[:upper:]' '[:lower:]')
@@ -44,16 +49,31 @@ install: ## Install binaries
 
 .PHONY: generate
 generate: ## Generate catalog manifests
-	@bash ./scripts/generate.sh -v $(OCP) -p $(DIR) -t $(TMP) -b $(BUNDLE) -r $(REBUILD) $(CONFIG)
+	@bash ./scripts/generate.sh \
+		$(if $(OCP),-v $(OCP)) \
+		$(if $(DIR),-p $(DIR)) \
+		$(if $(TMP),-t $(TMP)) \
+		$(if $(BUNDLE),-b $(BUNDLE)) \
+		-r $(REBUILD) \
+		$(CONFIG)
 
-#.PHONY: build
-#build: ## Build catalog image
-#	#TODO: Implement builds automation
-#
-#.PHONY: push
-#push: ## Push catalog to repository
-#	#TODO: Implement builds automation
-#
+.PHONY: build
+build: ## Build catalog image (requires OCP and VERSION)
+	@if [ -z "$(OCP)" ]; then echo "Error: OCP version is required. Usage: make build OCP=4.18 VERSION=1.7"; exit 1; fi
+	@if [ -z "$(VERSION)" ]; then echo "Error: VERSION is required. Usage: make build OCP=4.18 VERSION=1.7"; exit 1; fi
+	@echo "Building image: $(IMAGE_NAME)"
+	podman build \
+		--tag "$(IMAGE_NAME)" \
+		--file "fbc/$(OCP)/Dockerfile" \
+		"fbc/$(OCP)"
+
+.PHONY: push
+push: build ## Push catalog image to registry (requires OCP and VERSION)
+	@if [ -z "$(OCP)" ]; then echo "Error: OCP version is required. Usage: make push OCP=4.18 VERSION=1.7"; exit 1; fi
+	@if [ -z "$(VERSION)" ]; then echo "Error: VERSION is required. Usage: make push OCP=4.18 VERSION=1.7"; exit 1; fi
+	@echo "Pushing image: $(IMAGE_NAME)"
+	podman push "$(IMAGE_NAME)"
+
 #.PHONY: test
 #test: ## Test catalog in cluster
 #	#TODO: Implement test automation
