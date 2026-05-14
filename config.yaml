@@ -5,11 +5,11 @@ ocp-support: # Support matrix for OpenShift Builds and OpenShift Platform versio
 #  4.14: [ 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ]
 #  4.15: [ 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ]
   4.16: [ 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ]
-  4.17: [ 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ]
-  4.18: [ 1.3, 1.4, 1.5, 1.6, 1.7 ]
-  4.19: [ 1.4, 1.5, 1.6, 1.7 ]
-  4.20: [ 1.6, 1.7 ]
-  4.21: [ 1.7 ]
+  4.17: [ 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 ]
+  4.18: [ 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 ]
+  4.19: [ 1.4, 1.5, 1.6, 1.7, 1.8 ]
+  4.20: [ 1.6, 1.7, 1.8 ]
+  4.21: [ 1.7, 1.8 ]
 catalog:
   packageName: "openshift-builds-operator"
   opmImage: "registry.redhat.io/openshift4/ose-operator-registry"
@@ -47,3 +47,4 @@ catalog:
   - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:c215fefbe944f32ee3dd07774ea8b1fb4329067b614591c118b1f6ec9caa56af # 1.7.0
   - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:e393e5040d0a03b107b1afdd3b01c29dc2ec66b3bf297a9f8699c63a54fb6e26 # 1.7.1
   - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:093834bac2e2f7f01968ef542b9bcbf5fbe530c9f0dd86521825797abb4a33a2 # 1.7.2
+  - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:b5e71156c80f4b61fde538d96d7142a2770a94f7bb51b53e6ba9f70e5b710022 # 1.8.0
