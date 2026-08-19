@@ -8,9 +8,9 @@ CYAN   := $(shell tput -Txterm setaf 6)
 RESET  := $(shell tput -Txterm sgr0)
 
 # Version requirements
-KUSTOMIZE_VERSION 	?= "5.5.0"
-OPM_VERSION 		?= "1.53.0"
-YQ_VERSION 			?= "4.44.3"
+KUSTOMIZE_VERSION 	?= "5.8.1"
+OPM_VERSION 		?= "1.73.0"
+YQ_VERSION 			?= "4.53.4"
 
 # Default files and directories
 TMP		?= "temp" # Blank value will create temp directory using 'mktemp'.
@@ -25,6 +25,7 @@ REBUILD	?= "false" # Set true to build catalog from scratch.
 OS 		?= $(shell uname -s | tr '[:upper:]' '[:lower:]')
 ARCH 	?= $(shell uname -m | sed 's/x86_64/amd64/')
 
+export PATH := $(CURDIR)/bin:$(PATH)
 
 .PHONY: help
 help: ## Show this help.
