@@ -1,0 +1,142 @@
+name: Generate and Push Catalog
+
+on:
+  workflow_dispatch:
+    inputs:
+      ocp_versions:
+        description: 'OCP version(s) to generate catalog for (comma-separated, e.g., "4.16,4.17,4.18" or "all" for all versions in config)'
+        required: true
+        default: 'all'
+        type: string
+      bundle:
+        description: 'Specific bundle image to add (optional, overrides config bundles)'
+        required: false
+        type: string
+      rebuild:
+        description: 'Generate catalog from scratch (deletes existing files)'
+        required: false
+        default: false
+        type: boolean
+      version:
+        description: 'Version tag for the catalog image (e.g., 1.6.0, test, dev)'
+        required: true
+        type: string
+        default: 'test'
+
+env:
+  TERM: xterm
+
+jobs:
+  prepare:
+    name: Prepare Build Matrix
+    runs-on: ubuntu-latest
+    outputs:
+      ocp_versions: ${{ steps.set-matrix.outputs.versions }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install yq
+        run: |
+          make install
+          echo "PATH=$PWD/bin:$PATH" >> $GITHUB_ENV
+
+      - name: Set OCP versions matrix
+        id: set-matrix
+        run: |
+          if [[ "${{ inputs.ocp_versions }}" == "all" ]]; then
+            # Get all OCP versions from config.yaml
+            VERSIONS=$(yq -e '.ocp-support | keys | .[]' config.yaml | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          else
+            # Parse comma-separated versions
+            VERSIONS=$(echo "${{ inputs.ocp_versions }}" | tr ',' '\n' | jq -R -s -c 'split("\n") | map(select(length > 0)) | map(gsub("\\s"; ""))')
+          fi
+          echo "versions=$VERSIONS" >> $GITHUB_OUTPUT
+          echo "Building for OCP versions: $VERSIONS"
+
+  generate-and-build:
+    name: Generate & Build OCP ${{ matrix.ocp_version }}
+    needs: prepare
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        ocp_version: ${{ fromJson(needs.prepare.outputs.ocp_versions) }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install required tools
+        run: |
+          make install
+          echo "PATH=$PWD/bin:$PATH" >> $GITHUB_ENV
+
+      - name: Log in to Red Hat Registry
+        uses: docker/login-action@v3
+        with:
+          registry: registry.redhat.io
+          username: ${{ secrets.REDHAT_REGISTRY_USERNAME }}
+          password: ${{ secrets.REDHAT_REGISTRY_PASSWORD }}
+
+      - name: Generate catalog
+        run: |
+          make generate \
+            OCP="${{ matrix.ocp_version }}" \
+            REBUILD="${{ inputs.rebuild }}" \
+            BUNDLE="${{ inputs.bundle }}"
+
+      - name: Validate catalog
+        run: |
+          PACKAGE_NAME=$(yq -e '.catalog.packageName' config.yaml)
+          opm validate "fbc/${{ matrix.ocp_version }}/${PACKAGE_NAME}"
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push catalog image
+        run: |
+          make push \
+            OCP="${{ matrix.ocp_version }}" \
+            VERSION="${{ inputs.version }}" \
+            REGISTRY="ghcr.io/${{ github.repository }}"
+
+      # - name: Upload catalog artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: catalog-ocp-${{ matrix.ocp_version }}
+      #     path: fbc/${{ matrix.ocp_version }}/
+      #     retention-days: 7
+
+  summary:
+    name: Build Summary
+    needs: [prepare, generate-and-build]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Generate summary
+        run: |
+          VERSION="${{ inputs.version }}"
+          
+          echo "## Catalog Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Configuration" >> $GITHUB_STEP_SUMMARY
+          echo "| Parameter | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| OCP Versions | \`${{ inputs.ocp_versions }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Bundle | \`${{ inputs.bundle || '(from config)' }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Rebuild | \`${{ inputs.rebuild }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Version | \`${VERSION}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Built Images" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          for ocp in $(echo '${{ needs.prepare.outputs.ocp_versions }}' | jq -r '.[]'); do
+            echo "- \`ghcr.io/${{ github.repository }}/openshift-builds-catalog:${VERSION}-${ocp}\`" >> $GITHUB_STEP_SUMMARY
+          done
