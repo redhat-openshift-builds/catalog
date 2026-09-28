@@ -94,14 +94,20 @@ entries:
 - name: openshift-builds-operator.v1.8.1
   replaces: openshift-builds-operator.v1.8.0
   skipRange: '>=1.3.0 <1.8.1'
+- name: openshift-builds-operator.v1.8.2
+  replaces: openshift-builds-operator.v1.8.1
+  skipRange: '>=1.3.0 <1.8.2'
 name: builds-1.8
 package: openshift-builds-operator
 schema: olm.channel
 ---
 entries:
 - name: openshift-builds-operator.v1.9.0
-  replaces: openshift-builds-operator.v1.8.1
+  replaces: openshift-builds-operator.v1.8.2
   skipRange: '>=1.3.0 <1.9.0'
+- name: openshift-builds-operator.v1.9.1
+  replaces: openshift-builds-operator.v1.9.0
+  skipRange: '>=1.3.0 <1.9.1'
 name: builds-1.9
 package: openshift-builds-operator
 schema: olm.channel
@@ -168,9 +174,15 @@ entries:
 - name: openshift-builds-operator.v1.8.1
   replaces: openshift-builds-operator.v1.8.0
   skipRange: '>=1.3.0 <1.8.1'
-- name: openshift-builds-operator.v1.9.0
+- name: openshift-builds-operator.v1.8.2
   replaces: openshift-builds-operator.v1.8.1
+  skipRange: '>=1.3.0 <1.8.2'
+- name: openshift-builds-operator.v1.9.0
+  replaces: openshift-builds-operator.v1.8.2
   skipRange: '>=1.3.0 <1.9.0'
+- name: openshift-builds-operator.v1.9.1
+  replaces: openshift-builds-operator.v1.9.0
+  skipRange: '>=1.3.0 <1.9.1'
 name: latest
 package: openshift-builds-operator
 schema: olm.channel
@@ -3825,6 +3837,178 @@ relatedImages:
   name: OPENSHIFT_BUILDS_BUILDAH
 schema: olm.bundle
 ---
+image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:f10ea49c62ae90ab5e50603805525d56dd05a2756f1f3ef7047b10e848334c33
+name: openshift-builds-operator.v1.8.2
+package: openshift-builds-operator
+properties:
+- type: olm.gvk
+  value:
+    group: operator.openshift.io
+    kind: OpenShiftBuild
+    version: v1alpha1
+- type: olm.gvk
+  value:
+    group: operator.shipwright.io
+    kind: ShipwrightBuild
+    version: v1alpha1
+- type: olm.package
+  value:
+    packageName: openshift-builds-operator
+    version: 1.8.2
+- type: olm.csv.metadata
+  value:
+    annotations:
+      alm-examples: |-
+        [
+          {
+            "apiVersion": "operator.openshift.io/v1alpha1",
+            "kind": "OpenShiftBuild",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "sharedResource": {
+                "state": "Enabled"
+              },
+              "shipwright": {
+                "build": {
+                  "state": "Enabled"
+                }
+              }
+            }
+          },
+          {
+            "apiVersion": "operator.shipwright.io/v1alpha1",
+            "kind": "ShipwrightBuild",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "targetNamespace": "openshift-builds"
+            }
+          }
+        ]
+      capabilities: Full Lifecycle
+      categories: Developer Tools, Integration & Delivery
+      certified: "true"
+      containerImage: registry.redhat.io/openshift-builds/openshift-builds-rhel9-operator
+      createdAt: "2026-09-22T07:09:13Z"
+      description: Builds for Red Hat OpenShift is a framework for building container
+        images on Kubernetes.
+      features.operators.openshift.io/cnf: "false"
+      features.operators.openshift.io/cni: "false"
+      features.operators.openshift.io/csi: "true"
+      features.operators.openshift.io/disconnected: "true"
+      features.operators.openshift.io/fips-compliant: "true"
+      features.operators.openshift.io/proxy-aware: "true"
+      features.operators.openshift.io/tls-profiles: "false"
+      features.operators.openshift.io/token-auth-aws: "false"
+      features.operators.openshift.io/token-auth-azure: "false"
+      features.operators.openshift.io/token-auth-gcp: "false"
+      operatorframework.io/cluster-monitoring: "true"
+      operatorframework.io/suggested-namespace: openshift-builds
+      operators.openshift.io/valid-subscription: '["OpenShift Container Platform",
+        "OpenShift Platform Plus"]'
+      operators.operatorframework.io/builder: operator-sdk-v1.39.2
+      operators.operatorframework.io/internal-objects: '["openshiftbuilds.operator.openshift.io","shipwrightbuilds.operator.shipwright.io"]'
+      operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
+      repository: https://github.com/shipwright-io/operator
+      support: Red Hat
+    apiServiceDefinitions: {}
+    crdDescriptions:
+      owned:
+      - description: |-
+          OpenShiftBuild describes the desired state of Builds for OpenShift, and the status of
+          all deployed components.
+        displayName: Open Shift Build
+        kind: OpenShiftBuild
+        name: openshiftbuilds.operator.openshift.io
+        version: v1alpha1
+      - description: ShipwrightBuild represents the deployment of Shipwright's build
+          controller on a Kubernetes cluster.
+        displayName: Shipwright Build
+        kind: ShipwrightBuild
+        name: shipwrightbuilds.operator.shipwright.io
+        version: v1alpha1
+    description: "Builds for Red Hat OpenShift is an extensible build framework based
+      on the Shipwright project, \nwhich you can use to build container images on
+      an OpenShift Container Platform cluster. \nYou can build container images from
+      source code and Dockerfile by using image build tools, \nsuch as Source-to-Image
+      (S2I), Buildah, and Buildpacks. You can create and apply build resources, view
+      logs of build runs, \nand manage builds in your OpenShift Container Platform
+      namespaces.\n\n## Prerequisites\n\n* OpenShift Pipelines operator must be installed
+      before installing this operator\n\nRead more: [https://shipwright.io](https://shipwright.io)\n\n##
+      Features\n\n* Standard Kubernetes-native API for building container images from
+      source code and Dockerfile\n\n* Support for Source-to-Image (S2I) and Buildah
+      build strategies\n\n* Extensibility with your own custom build strategies\n\n*
+      Execution of builds from source code in a local directory\n\n* Shipwright CLI
+      for creating and viewing logs, and managing builds on the cluster\n\n* Integrated
+      user experience with the Developer perspective of the OpenShift Container Platform
+      web console\n"
+    displayName: Builds for Red Hat OpenShift Operator
+    installModes:
+    - supported: false
+      type: OwnNamespace
+    - supported: false
+      type: SingleNamespace
+    - supported: false
+      type: MultiNamespace
+    - supported: true
+      type: AllNamespaces
+    keywords:
+    - build
+    - shipwright
+    - tekton
+    - cicd
+    labels:
+      operatorframework.io/arch.amd64: supported
+      operatorframework.io/arch.arm64: supported
+      operatorframework.io/arch.ppc64le: supported
+      operatorframework.io/arch.s390x: supported
+    links:
+    - name: Documentation
+      url: https://docs.redhat.com/en/documentation/builds_for_red_hat_openshift/1.7
+    - name: Builds for Openshift
+      url: https://github.com/redhat-openshift-builds/operator
+    maintainers:
+    - email: openshift-builds@redhat.com
+      name: Red Hat OpenShift Builds Team
+    maturity: stable
+    minKubeVersion: 1.25.0
+    provider:
+      name: Red Hat
+      url: https://www.redhat.com
+relatedImages:
+- image: registry.redhat.io/openshift-builds/openshift-builds-controller-rhel9@sha256:d5e906c8bc0cf550ce959dac5f410c090a3d252ac40ded102ecd250bbe29559d
+  name: OPENSHIFT_BUILDS_CONTROLLER
+- image: registry.redhat.io/openshift-builds/openshift-builds-git-cloner-rhel9@sha256:8fb75d3f824f3151d23cebf7e887b51f7df5ab2d1842efa2ddbe2b7488b54f3c
+  name: OPENSHIFT_BUILDS_GIT_CLONER
+- image: registry.redhat.io/openshift-builds/openshift-builds-image-bundler-rhel9@sha256:2d95a880313111963a51185f8ffa3a53af3287970257ed971b73898941ab680c
+  name: OPENSHIFT_BUILDS_IMAGE_BUNDLER
+- image: registry.redhat.io/openshift-builds/openshift-builds-image-processing-rhel9@sha256:a474aa9e215454d6076de4ed0493a583d9b926646a02a4be9a5a63aa2a4fa5a9
+  name: OPENSHIFT_BUILDS_IMAGE_PROCESSING
+- image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:f10ea49c62ae90ab5e50603805525d56dd05a2756f1f3ef7047b10e848334c33
+  name: ""
+- image: registry.redhat.io/openshift-builds/openshift-builds-rhel9-operator@sha256:2b57ecc66b7b408c3b0e2cac28549527c39b7343b79b1446ecfec337718face9
+  name: OPENSHIFT_BUILDS_OPERATOR
+- image: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-rhel9@sha256:f1c8616e98f46436e851d1b7e953573d0eb81f92aee4d3dfee415d687f4beba6
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE
+- image: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-webhook-rhel9@sha256:05babe849350e3609e3c061d88c6edf656ebc502169a35cb2526bab4d39a9e5a
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE_WEBHOOK
+- image: registry.redhat.io/openshift-builds/openshift-builds-waiters-rhel9@sha256:3ddcbbdcd2c713912906ea07c9f5838a3ace0b593e9f11f1606b9edb58e3625b
+  name: OPENSHIFT_BUILDS_WAITER
+- image: registry.redhat.io/openshift-builds/openshift-builds-webhook-rhel9@sha256:efe4f99283e2c2f7252ae1be47394f2deab65d6297ac2854fa9d2a548ae0914c
+  name: OPENSHIFT_BUILDS_WEBHOOK
+- image: registry.redhat.io/openshift4/ose-csi-node-driver-registrar-rhel9@sha256:ce7050192d9850ed4c35cb3295ccdeec1aa593e27e3a3da6d6aca97cde782abe
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE_NODE_REGISTRAR
+- image: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9@sha256:c1a84feb88d53e93bdcf2cd5f76e2cbb18541c8b0e2979c132a888d6c280b664
+  name: OPENSHIFT_BUILDS_KUBE_RBAC_PROXY
+- image: registry.redhat.io/source-to-image/source-to-image-rhel9@sha256:70293cb8a80aa548933ff5f502bac89945a5cd08801c4ca3aac08a10dd01f62f
+  name: OPENSHIFT_BUILDS_SOURCE_TO_IMAGE
+- image: registry.redhat.io/ubi9/buildah@sha256:8ea2b81b32f70b9502d88722a5f69de8c0cf5efa6f30df041873546e9f9438cb
+  name: OPENSHIFT_BUILDS_BUILDAH
+schema: olm.bundle
+---
 image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:9c501974b8249e50834aa7cdf5a120cb32f5fc3a00cc1f77e763c55029e33806
 name: openshift-builds-operator.v1.9.0
 package: openshift-builds-operator
@@ -3997,6 +4181,178 @@ relatedImages:
   name: OPENSHIFT_BUILDS_BUILDAH
 schema: olm.bundle
 ---
+image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:8444eb383f36d577b2e76146519648d101e5c7db3ff6ad55c3f8f56af27c21e5
+name: openshift-builds-operator.v1.9.1
+package: openshift-builds-operator
+properties:
+- type: olm.gvk
+  value:
+    group: operator.openshift.io
+    kind: OpenShiftBuild
+    version: v1alpha1
+- type: olm.gvk
+  value:
+    group: operator.shipwright.io
+    kind: ShipwrightBuild
+    version: v1alpha1
+- type: olm.package
+  value:
+    packageName: openshift-builds-operator
+    version: 1.9.1
+- type: olm.csv.metadata
+  value:
+    annotations:
+      alm-examples: |-
+        [
+          {
+            "apiVersion": "operator.openshift.io/v1alpha1",
+            "kind": "OpenShiftBuild",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "sharedResource": {
+                "state": "Enabled"
+              },
+              "shipwright": {
+                "build": {
+                  "state": "Enabled"
+                }
+              }
+            }
+          },
+          {
+            "apiVersion": "operator.shipwright.io/v1alpha1",
+            "kind": "ShipwrightBuild",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "targetNamespace": "openshift-builds"
+            }
+          }
+        ]
+      capabilities: Full Lifecycle
+      categories: Developer Tools, Integration & Delivery
+      certified: "true"
+      containerImage: registry.redhat.io/openshift-builds/openshift-builds-rhel10-operator
+      createdAt: "2026-09-22T07:05:22Z"
+      description: Builds for Red Hat OpenShift is a framework for building container
+        images on Kubernetes.
+      features.operators.openshift.io/cnf: "false"
+      features.operators.openshift.io/cni: "false"
+      features.operators.openshift.io/csi: "true"
+      features.operators.openshift.io/disconnected: "true"
+      features.operators.openshift.io/fips-compliant: "true"
+      features.operators.openshift.io/proxy-aware: "true"
+      features.operators.openshift.io/tls-profiles: "false"
+      features.operators.openshift.io/token-auth-aws: "false"
+      features.operators.openshift.io/token-auth-azure: "false"
+      features.operators.openshift.io/token-auth-gcp: "false"
+      operatorframework.io/cluster-monitoring: "true"
+      operatorframework.io/suggested-namespace: openshift-builds
+      operators.openshift.io/valid-subscription: '["OpenShift Container Platform",
+        "OpenShift Platform Plus"]'
+      operators.operatorframework.io/builder: operator-sdk-v1.39.2
+      operators.operatorframework.io/internal-objects: '["openshiftbuilds.operator.openshift.io","shipwrightbuilds.operator.shipwright.io"]'
+      operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
+      repository: https://github.com/shipwright-io/operator
+      support: Red Hat
+    apiServiceDefinitions: {}
+    crdDescriptions:
+      owned:
+      - description: |-
+          OpenShiftBuild describes the desired state of Builds for OpenShift, and the status of
+          all deployed components.
+        displayName: Open Shift Build
+        kind: OpenShiftBuild
+        name: openshiftbuilds.operator.openshift.io
+        version: v1alpha1
+      - description: ShipwrightBuild represents the deployment of Shipwright's build
+          controller on a Kubernetes cluster.
+        displayName: Shipwright Build
+        kind: ShipwrightBuild
+        name: shipwrightbuilds.operator.shipwright.io
+        version: v1alpha1
+    description: "Builds for Red Hat OpenShift is an extensible build framework based
+      on the Shipwright project, \nwhich you can use to build container images on
+      an OpenShift Container Platform cluster. \nYou can build container images from
+      source code and Dockerfile by using image build tools, \nsuch as Source-to-Image
+      (S2I), Buildah, and Buildpacks. You can create and apply build resources, view
+      logs of build runs, \nand manage builds in your OpenShift Container Platform
+      namespaces.\n\n## Prerequisites\n\n* OpenShift Pipelines operator must be installed
+      before installing this operator\n\nRead more: [https://shipwright.io](https://shipwright.io)\n\n##
+      Features\n\n* Standard Kubernetes-native API for building container images from
+      source code and Dockerfile\n\n* Support for Source-to-Image (S2I) and Buildah
+      build strategies\n\n* Extensibility with your own custom build strategies\n\n*
+      Execution of builds from source code in a local directory\n\n* Shipwright CLI
+      for creating and viewing logs, and managing builds on the cluster\n\n* Integrated
+      user experience with the Developer perspective of the OpenShift Container Platform
+      web console\n"
+    displayName: Builds for Red Hat OpenShift Operator
+    installModes:
+    - supported: false
+      type: OwnNamespace
+    - supported: false
+      type: SingleNamespace
+    - supported: false
+      type: MultiNamespace
+    - supported: true
+      type: AllNamespaces
+    keywords:
+    - build
+    - shipwright
+    - tekton
+    - cicd
+    labels:
+      operatorframework.io/arch.amd64: supported
+      operatorframework.io/arch.arm64: supported
+      operatorframework.io/arch.ppc64le: supported
+      operatorframework.io/arch.s390x: supported
+    links:
+    - name: Documentation
+      url: https://docs.redhat.com/en/documentation/builds_for_red_hat_openshift/1.9
+    - name: Builds for Openshift
+      url: https://github.com/redhat-openshift-builds/operator
+    maintainers:
+    - email: openshift-builds@redhat.com
+      name: Red Hat OpenShift Builds Team
+    maturity: stable
+    minKubeVersion: 1.25.0
+    provider:
+      name: Red Hat
+      url: https://www.redhat.com
+relatedImages:
+- image: registry.redhat.io/openshift-builds/openshift-builds-controller-rhel10@sha256:5d71133597fa9c5c784ebb213c850331daeec40edbcb29f9c84cfd6be8c81064
+  name: OPENSHIFT_BUILDS_CONTROLLER
+- image: registry.redhat.io/openshift-builds/openshift-builds-git-cloner-rhel10@sha256:948c713831ac5fb8f97fabfec48a987a7a43840d398c69a48d2e764d71aa5973
+  name: OPENSHIFT_BUILDS_GIT_CLONER
+- image: registry.redhat.io/openshift-builds/openshift-builds-image-bundler-rhel10@sha256:d2c19b79badaa6df92b1b728a347853aaae734556178973ab1ae439167f1e3cd
+  name: OPENSHIFT_BUILDS_IMAGE_BUNDLER
+- image: registry.redhat.io/openshift-builds/openshift-builds-image-processing-rhel10@sha256:744f93cb3913eeb0e7da3ed1eb2cf4d92e748b2dcbb5d1d6bcc5a114791d51b0
+  name: OPENSHIFT_BUILDS_IMAGE_PROCESSING
+- image: registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:8444eb383f36d577b2e76146519648d101e5c7db3ff6ad55c3f8f56af27c21e5
+  name: ""
+- image: registry.redhat.io/openshift-builds/openshift-builds-rhel10-operator@sha256:0f44829f4b4bea2a331471fc1144931613435b17d06b01a7053f8f343d475635
+  name: OPENSHIFT_BUILDS_OPERATOR
+- image: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-rhel10@sha256:e2f2915bca4a71ea5a432a8ec6d1536c3bcf2a8e59ad84eca1cbcd55c0e6488b
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE
+- image: registry.redhat.io/openshift-builds/openshift-builds-shared-resource-webhook-rhel10@sha256:1eeb582710f912747d17beb9484cbf0030070c750f32402b87c4ce4979ffd4c5
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE_WEBHOOK
+- image: registry.redhat.io/openshift-builds/openshift-builds-waiters-rhel10@sha256:a6b79273e227a885c66d4f79cc059ec24e35f56d863da51a9262723dd124577b
+  name: OPENSHIFT_BUILDS_WAITER
+- image: registry.redhat.io/openshift-builds/openshift-builds-webhook-rhel10@sha256:80984b3db00f7eed34bcf41bc418c7ecc2e141de3381832690fef6c36f48e689
+  name: OPENSHIFT_BUILDS_WEBHOOK
+- image: registry.redhat.io/openshift4/ose-csi-node-driver-registrar-rhel9@sha256:8bed04198de197162eaf332890e40100c5a7061bf9f728be09f2004671f9632c
+  name: OPENSHIFT_BUILDS_SHARED_RESOURCE_NODE_REGISTRAR
+- image: registry.redhat.io/openshift4/ose-kube-rbac-proxy-rhel9@sha256:08cc0aca059d030e9ebd108adcc60aa6319d64199d4c433333d389ce6c01e637
+  name: OPENSHIFT_BUILDS_KUBE_RBAC_PROXY
+- image: registry.redhat.io/source-to-image/source-to-image-rhel9@sha256:798e0e860df8e3ca1ff5f8aa796940d6dbd4b739ccfc35c6f4c9bc046d5f0c12
+  name: OPENSHIFT_BUILDS_SOURCE_TO_IMAGE
+- image: registry.redhat.io/ubi10/buildah@sha256:48c76ef9635739ad0c33645c2885ab6aa3036dca5883f475b820ac456d6817b6
+  name: OPENSHIFT_BUILDS_BUILDAH
+schema: olm.bundle
+---
 entries:
 - message: '''builds-1.3'' has reached the end of maintenance support. Please upgrade
     to ''builds-1.9''.'
@@ -4004,17 +4360,17 @@ entries:
     name: builds-1.3
     schema: olm.channel
 - message: '''openshift-builds-operator.v1.3.0'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.3.0
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.3.1'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.3.1
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.3.2'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.3.2
     schema: olm.bundle
@@ -4024,12 +4380,12 @@ entries:
     name: builds-1.4
     schema: olm.channel
 - message: '''openshift-builds-operator.v1.4.0'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.4.0
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.4.1'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.4.1
     schema: olm.bundle
@@ -4039,17 +4395,17 @@ entries:
     name: builds-1.5
     schema: olm.channel
 - message: '''openshift-builds-operator.v1.5.0'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.5.0
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.5.1'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.5.1
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.5.2'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.5.2
     schema: olm.bundle
@@ -4059,32 +4415,32 @@ entries:
     name: builds-1.6
     schema: olm.channel
 - message: '''openshift-builds-operator.v1.6.0'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.6.0
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.6.1'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.6.1
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.6.2'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.6.2
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.6.3'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.6.3
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.6.4'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.6.4
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.6.5'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.6.5
     schema: olm.bundle
@@ -4094,27 +4450,27 @@ entries:
     name: builds-1.7
     schema: olm.channel
 - message: '''openshift-builds-operator.v1.7.0'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.7.0
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.7.1'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.7.1
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.7.2'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.7.2
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.7.3'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.7.3
     schema: olm.bundle
 - message: '''openshift-builds-operator.v1.7.4'' has reached the end of maintenance
-    support. Please upgrade to ''openshift-builds-operator.v1.9.0''.'
+    support. Please upgrade to ''openshift-builds-operator.v1.9.1''.'
   reference:
     name: openshift-builds-operator.v1.7.4
     schema: olm.bundle
