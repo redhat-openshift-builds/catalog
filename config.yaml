@@ -55,3 +55,5 @@ catalog:
     - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:9c501974b8249e50834aa7cdf5a120cb32f5fc3a00cc1f77e763c55029e33806 # 1.9.0
     - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:f10ea49c62ae90ab5e50603805525d56dd05a2756f1f3ef7047b10e848334c33 # 1.8.2
     - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:8444eb383f36d577b2e76146519648d101e5c7db3ff6ad55c3f8f56af27c21e5 # 1.9.1
+    - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:7c8e411b9c54a00dad3798858a6ab3f35322539c6601a068fe9c0f7ab1911852 # 1.8.3
+    - registry.redhat.io/openshift-builds/openshift-builds-operator-bundle@sha256:029d766c4d9f339659da8b20644df820cf3e4ee61cc618adf3735138945c77ec # 1.9.2
